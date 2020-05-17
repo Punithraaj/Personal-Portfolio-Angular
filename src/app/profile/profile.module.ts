@@ -5,6 +5,7 @@ import { SnotifyModule, SnotifyService, ToastDefaults } from 'ng-snotify';
 import { ProfileComponent } from './profile.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
+import { IntroComponent } from './intro/intro.component';
 import { AboutComponent } from './about/about.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
 
@@ -21,6 +22,7 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     HeaderComponent,
     FooterComponent,
     AboutComponent,
+    IntroComponent,
   ],
   providers: [
     { provide: 'SnotifyToastConfig', useValue: ToastDefaults},
