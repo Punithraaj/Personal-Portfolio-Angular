@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  baseUrl : `${window.location.protocol}//${window.location.hostname}/portfolio/`,
 };

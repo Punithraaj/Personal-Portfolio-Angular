@@ -6,6 +6,7 @@ import { RouterModule, Routes, ExtraOptions } from '@angular/router';
 import { ProfileComponent } from './profile/profile.component';
 import { ProfileModule } from './profile/profile.module';
 import { HttpClientModule } from '@angular/common/http';
+import {FormsModule,ReactiveFormsModule} from '@angular/forms';
 
 const routes: Routes = [
   {
@@ -24,6 +25,8 @@ const config: ExtraOptions = {
   ],
   imports: [
     BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
     RouterModule.forRoot(routes, config),
     ProfileModule,
     HttpClientModule
