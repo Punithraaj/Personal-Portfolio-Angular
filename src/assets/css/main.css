@@ -5140,9 +5140,9 @@ clear: both;
 }
 .timeline-centered .timeline-entry .timeline-entry-inner .timeline-time {
 position: absolute;
-left: -115px;
+left: -135px;
 text-align: right;
-padding: 10px;
+padding-top: 20px;
 -webkit-box-sizing: border-box;
 -moz-box-sizing: border-box;
 box-sizing: border-box;
@@ -5151,11 +5151,11 @@ box-sizing: border-box;
 display: block;
 }
 .timeline-centered .timeline-entry .timeline-entry-inner .timeline-time > span:first-child {
-font-size: 18px;
+font-size: 16px;
 font-weight: bold;
 }
 .timeline-centered .timeline-entry .timeline-entry-inner .timeline-time > span:last-child {
-font-size: 12px;
+font-size: 13px;
 }
 .timeline-centered .timeline-entry .timeline-entry-inner .timeline-icon {
 background: #fff;
@@ -5257,9 +5257,22 @@ background: #488c6c;
 .timeline-centered .timeline-entry .timeline-entry-inner .timeline-label.bg-green:after {
 border-color: transparent #488c6c transparent transparent;
 }
+.list {
+color: #ffffff;
+font-family: 'Oswald';
+font-weight: bold;
+}
+
+.non_list {
+color: #ffffff;
+font-family: 'Oswald';
+margin-left: -25px;
+}
+
 .timeline-centered .timeline-entry .timeline-entry-inner .timeline-label.bg-green .timeline-title,
 .timeline-centered .timeline-entry .timeline-entry-inner .timeline-label.bg-green p {
 color: #ffffff;
+font-family: 'Oswald';
 }
 .timeline-centered .timeline-entry .timeline-entry-inner .timeline-label.bg-orange {
 background: #e9662c;
