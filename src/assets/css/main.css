@@ -4870,7 +4870,7 @@ img {
   border-radius: 50%;
   height: 200px;
   width: 250px;
-  position: absolute;
+  position: relative;
   left: 0;
   -webkit-animation: pulsate 1.6s ease-out;
           animation: pulsate 1.6s ease-out;
