@@ -24,7 +24,7 @@
     "express": "^4.17.1",
     "ng-snotify": "^9.0.1",
     "ngx-spinner": "^9.0.2",
-    "nodemailer": "^6.4.6",
+    "nodemailer": "^6.6.1",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"
