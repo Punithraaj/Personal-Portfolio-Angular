@@ -985,19 +985,19 @@ fieldset[disabled]
 .input-group-addon:first-child,
 .input-group-btn:first-child > .dropdown-toggle,
 .input-group-btn:last-child > .btn:not(:last-child):not(.dropdown-toggle) {
-  border-right: 1 none;
+  border-right: 0 none;
 }
 
 .input-group .form-control:last-child,
 .input-group-addon:last-child,
 .input-group-btn:last-child > .dropdown-toggle,
 .input-group-btn:first-child > .btn:not(:first-child) {
-  border-left: 1 none;
+  border-left: 0 none;
 }
 
 .form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control {
   background-color: #E3E3E3;
-  color: rgb(0, 0, 0);
+  color: #888;
   cursor: not-allowed;
 }
 
@@ -4860,31 +4860,15 @@ img {
   }
 }
 
-.profile-image a {
+.cc-profile-image a {
   position: relative;
 }
 
-/* .profile-image a:before {
-  content: "";
-  border: 15px solid rgba(55, 140, 63, 0.6);
-  border-radius: 50%;
-  height: 200px;
-  width: 250px;
-  position: relative;
-  left: 0;
-  -webkit-animation: pulsate 1.6s ease-out;
-          animation: pulsate 1.6s ease-out;
-  -webkit-animation-iteration-count: infinite;
-          animation-iteration-count: infinite;
-  opacity: 0.0;
-  z-index: 99;
-} */
-
-.profile-image img {
+.cc-profile-image img {
   position: relative;
   border-radius: 50%;
-  height: 200px;
-  width: 250px;
+  height: 180px;
+  width: 180px;
   padding: 0;
   margin: 0;
   border: 15px solid transparent;
@@ -4893,12 +4877,12 @@ img {
   transition: all .3s ease-out;
 }
 
-.profile-image a:hover img {
+.cc-profile-image a:hover img {
   -webkit-transform: scale(1.06, 1.06);
           transform: scale(1.06, 1.06);
 }
 
-.profile-image a:hover:before {
+.cc-profile-image a:hover:before {
   -webkit-animation: none;
           animation: none;
 }
@@ -5045,133 +5029,3 @@ a.credit {
 .section {
   padding-bottom: 0;
 }
-
-
-/*timmed Centered */
-.list {
-color: #000000;
-font-family: 'Oswald';
-font-weight: bold;
-}
-
-.non_list {
-color: #000000;
-font-family: 'Oswald';
-margin-left: 0px;
-}
-
-.timeline {
-  list-style: none;
-  padding: 20px 0 20px;
-  position: relative;
-}
-.timeline:before {
-  top: 70px;
-  bottom: 170px;
-  position: absolute;
-  content: " ";
-  width: 3px;
-  background-color: #CCCCCC;
-  left: 25px;
-  margin-left: -1.5px;
-}
-.timeline > li {
-  margin-bottom: 20px;
-  position: relative;
-}
-.timeline > li:before,
-.timeline > li:after {
-  content: " ";
-  display: table;
-}
-.timeline > li:after {
-  clear: both;
-}
-.timeline > li:before,
-.timeline > li:after {
-  content: " ";
-  display: table;
-}
-.timeline > li:after {
-  clear: both;
-}
-.timeline > li > .timeline-panel {
-  width: calc( 100% - 55px );
-  float: right;
-  border: 1px solid #d4d4d4;
-  border-radius: 22px;
-  padding: 10px;
-  position: relative;
-  -webkit-box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175);
-  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175);
-}
-.timeline > li > .timeline-panel:before {
-  position: absolute;
-  top: 26px;
-  left: -15px;
-  display: inline-block;
-}
-.timeline > li > .timeline-panel:after {
-  position: absolute;
-  top: 27px;
-  left: -14px;
-  display: inline-block;
-}
-.timeline > li > .timeline-badge {
-  color: #FFFFFF;
-  width: 25px;
-  height: 25px;
-  line-height: 25px;
-  font-size: 1.4em;
-  text-align: center;
-  position: absolute;
-  top: 50px;
-  left: 13px;
-  
-  background-color: #666666;
-  z-index: 100;
-  border-top-right-radius: 50%;
-  border-top-left-radius: 50%;
-  border-bottom-right-radius: 50%;
-  border-bottom-left-radius: 50%;
-  
-}
-.timeline > li.timeline-inverted > .timeline-panel {
-  float: left;
-}
-.timeline > li.timeline-inverted > .timeline-panel:before {
-  border-left-width: 0;
-  border-right-width: 15px;
-  right: -15px;
-  right: auto;
-}
-.timeline > li.timeline-inverted > .timeline-panel:after {
-  border-left-width: 0;
-  border-right-width: 14px;
-  left: -14px;
-  right: auto;
-}
-.timeline-badge.primary {
-  background-color: #006699  !important;
-}
-.timeline-badge.up {
-  background-color: #488c6c !important;
-}
-.timeline-badge.down {
-  background-color: #e9662c !important;
-}
-.timeline-badge.neutral {
-  background-color: #999999 !important;
-}
-.timeline-title {
-  margin-top: 0;
-  color: inherit;
-}
-.timeline-body > p,
-.timeline-body > ul {
-  margin-bottom: 0;
-}
-.timeline-body > p + p {
-  margin-top: 5px;
-}
-

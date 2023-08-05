@@ -1,33 +1,29 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { RouterModule, Routes, ExtraOptions } from '@angular/router';
 import { ProfileComponent } from './profile/profile.component';
-import { ProfileModule } from './profile/profile.module';
+import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
-import {FormsModule,ReactiveFormsModule} from '@angular/forms';
+import { ProfileModule } from './profile/profile.module';
 
-const routes: Routes = [
-  {
-    path: '',
-    component: ProfileComponent
-  }
-];
-
-const config: ExtraOptions = {
-  useHash: true,
-};
+const routes: Routes = [{
+  path:'',
+  component:ProfileComponent
+}]
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
-    BrowserModule,
-    FormsModule,
-    ReactiveFormsModule,
-    RouterModule.forRoot(routes, config),
+    BrowserModule.withServerTransition({appId: 'serverApp'}),
+    BrowserAnimationsModule,
+    RouterModule.forRoot(routes, {
+      initialNavigation: 'enabledBlocking'
+    }),
     ProfileModule,
     HttpClientModule
   ],

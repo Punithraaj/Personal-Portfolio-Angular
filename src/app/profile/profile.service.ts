@@ -1,19 +1,16 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable } from 'rxjs'
 import { HttpClient } from '@angular/common/http';
-import { environment } from '../../environments/environment';
 
-@Injectable({
+@Injectable ({
     providedIn: 'root'
-  })
-  export class ProfileService {
-    baseUrl = environment.baseUrl;
-
-  constructor(
-    private http: HttpClient
-  ) { }
-
-  contactus(data: any): Observable<any> {
-    return this.http.post('http://localhost:4200/contact',data);
-  }
-  }
+})
+export class ProfileService {
+    constructor (private http: HttpClient) {}
+cvUrl = "https://drive.google.com/file/d/1Bngz7t8l_RAtwVmtHjnPe6CIoFWK9AfY/view?usp=sharing";
+fbUrl = "https://www.facebook.com/roaring.raaj/"
+instaUrl = "https://www.instagram.com/roaring_raaj/"
+linkedinUrl = "https://www.linkedin.com/in/roaring-raaj"
+githubUrl = "https://github.com/Punithraaj"
+twitterUrl = "https://twitter.com/roaringraaj"
+}
