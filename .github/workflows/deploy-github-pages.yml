@@ -36,11 +36,7 @@ jobs:
         run: npm ci
 
       - name: Build for production
-        run: npm run build -- --configuration production
-
-      - name: Configure Git Pages base href
-        run: |
-          sed -Ei 's|<base href="/"[[:space:]]*/?>|<base href="/Personal-Portfolio-Angular/" />|' dist/Personal-Portfolio-Angular/browser/index.html
+        run: npm run build -- --configuration production --base-href /Personal-Portfolio-Angular/
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
