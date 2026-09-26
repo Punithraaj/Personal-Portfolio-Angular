@@ -1,1 +1,32 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
+
+:root {
+  --bg: #07111f;
+  --bg-soft: #0d1b2d;
+  --surface: rgba(255,255,255,.07);
+  --text: #f8fafc;
+  --muted: #9fb0c3;
+  --accent: #5eead4;
+  --accent-2: #22d3ee;
+  --border: rgba(255,255,255,.12);
+  --content: 1180px;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+body { margin: 0; color: var(--text); background: radial-gradient(circle at 10% 0%, rgba(34,211,238,.12), transparent 28rem), var(--bg); font-family: 'DM Sans', sans-serif; line-height: 1.6; }
+a { color: inherit; text-decoration: none; }
+button, input, textarea { font: inherit; }
+.container { width: min(calc(100% - 40px), var(--content)); margin: 0 auto; }
+.section { padding: 110px 0; }
+.section-muted { background: rgba(255,255,255,.025); }
+.section-heading { max-width: 700px; margin-bottom: 42px; }
+.section-eyebrow { margin: 0 0 12px; color: var(--accent); font-size: .78rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; }
+.section-title { margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: clamp(2rem, 4vw, 3.5rem); line-height: 1.08; }
+.section-description { color: var(--muted); font-size: 1.05rem; }
+.card { border: 1px solid var(--border); border-radius: 22px; background: var(--surface); box-shadow: 0 24px 80px rgba(0,0,0,.22); backdrop-filter: blur(18px); }
+.btn { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 22px; border: 1px solid transparent; border-radius: 999px; font-weight: 700; transition: transform .18s, box-shadow .18s; }
+.btn:hover { transform: translateY(-2px); }
+.btn-primary { color: #06201f; background: linear-gradient(135deg,var(--accent),var(--accent-2)); box-shadow: 0 12px 30px rgba(45,212,191,.2); }
+.btn-secondary { border-color: var(--border); color: var(--text); }
+@media (max-width: 640px) { .container { width: min(calc(100% - 28px), var(--content)); } .section { padding: 76px 0; } }
