@@ -3,17 +3,24 @@
     <div class="section-heading" data-aos="fade-up">
       <p class="section-eyebrow">About me</p>
       <h2 class="section-title">A practical engineer with a product mindset.</h2>
-      <p class="section-description">I enjoy turning complex requirements into maintainable software that is useful, accessible, and easy to evolve.</p>
+      <p class="section-description">I focus on dependable delivery, clean implementation, and products that remain useful as they evolve.</p>
     </div>
     <div class="about-grid">
       <article class="card about-story" data-aos="fade-up" data-aos-delay="80">
-        <p>I am passionate about building software, learning new technologies, and solving difficult problems with a calm and structured approach.</p>
-        <p>My experience includes enterprise development, web applications, analytical platforms, and modern front-end experiences.</p>
+        @for (paragraph of aboutParagraphs; track paragraph) {
+          <p>{{ paragraph }}</p>
+        }
+        <div class="about-highlights">
+          <span>Enterprise development</span>
+          <span>Analytical web applications</span>
+          <span>Modern front-end experiences</span>
+        </div>
       </article>
       <article class="card about-details" data-aos="fade-up" data-aos-delay="140">
-        <div><span>Location</span><strong>Hassan, Karnataka, India</strong></div>
-        <div><span>Email</span><a href="mailto:punithraaj14@gmail.com">punithraaj14@gmail.com</a></div>
-        <div><span>Languages</span><strong>English, Kannada, Hindi, Telugu</strong></div>
+        <div><span>Location</span><strong>{{ profile.location }}</strong></div>
+        <div><span>Email</span><a [href]="'mailto:' + profile.email">{{ profile.email }}</a></div>
+        <div><span>Languages</span><strong>{{ profile.languages.join(', ') }}</strong></div>
+        <div><span>Resume</span><a [href]="profile.resumeUrl" target="_blank" rel="noopener noreferrer">Open resume</a></div>
       </article>
     </div>
   </div>

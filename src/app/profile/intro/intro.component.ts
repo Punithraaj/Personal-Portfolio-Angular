@@ -1,4 +1,5 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { PROFILE } from '../portfolio-content';
 import { SectionScrollService } from '../section-scroll.service';
 
 @Component({
@@ -9,6 +10,8 @@ import { SectionScrollService } from '../section-scroll.service';
   styleUrls: ['./intro.component.scss']
 })
 export class IntroComponent {
+  readonly profile = PROFILE;
+
   constructor(private readonly sectionScrollService: SectionScrollService) {}
 
   navigateToSection(event: Event, sectionId: string): void {

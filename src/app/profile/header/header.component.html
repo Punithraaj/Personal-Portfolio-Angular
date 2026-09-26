@@ -1,13 +1,28 @@
 <header class="site-header">
   <nav class="nav-shell container" aria-label="Primary navigation">
-    <a class="brand" href="#home" (click)="navigateToSection($event, 'home')"><span class="brand-mark">P</span><span>Punithraj M N</span></a>
-    <button class="menu-toggle" type="button" aria-label="Toggle navigation" [attr.aria-expanded]="menuOpen" (click)="menuOpen = !menuOpen"><span></span><span></span><span></span></button>
-    <div class="nav-links" [class.is-open]="menuOpen">
-      <a href="#about" (click)="navigateToSection($event, 'about')">About</a>
-      <a href="#experience" (click)="navigateToSection($event, 'experience')">Experience</a>
-      <a href="#skills" (click)="navigateToSection($event, 'skills')">Skills</a>
-      <a href="#education" (click)="navigateToSection($event, 'education')">Education</a>
-      <a href="#contact" (click)="navigateToSection($event, 'contact')">Contact</a>
+    <a class="brand" [class.is-active]="activeSection() === 'home'" href="#home" (click)="navigateToSection($event, 'home')">
+      <span class="brand-mark">P</span>
+      <span>Punithraj M N</span>
+    </a>
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-label="Toggle navigation"
+      aria-controls="primary-navigation"
+      [attr.aria-expanded]="menuOpen"
+      (click)="toggleMenu()">
+      <span></span><span></span><span></span>
+    </button>
+    <div id="primary-navigation" class="nav-links" [class.is-open]="menuOpen">
+      @for (item of navigationItems; track item.id) {
+        <a
+          [href]="'#' + item.id"
+          [class.is-active]="activeSection() === item.id"
+          [attr.aria-current]="activeSection() === item.id ? 'page' : null"
+          (click)="navigateToSection($event, item.id)">
+          {{ item.label }}
+        </a>
+      }
     </div>
   </nav>
 </header>

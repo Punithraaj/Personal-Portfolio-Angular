@@ -1,0 +1,32 @@
+<section id="projects" class="section section-muted">
+  <div class="container">
+    <div class="section-heading" data-aos="fade-up">
+      <p class="section-eyebrow">Projects</p>
+      <h2 class="section-title">Selected work and portfolio builds.</h2>
+      <p class="section-description">A few public builds that show how I present product thinking, interaction details, and cross-platform UI work.</p>
+    </div>
+
+    <div class="projects-grid">
+      @for (project of projects; track project.title) {
+        <article class="card project-card" data-aos="fade-up">
+          <img class="project-image" [src]="project.image" [alt]="project.imageAlt">
+          <div class="project-body">
+            <h3>{{ project.title }}</h3>
+            <p>{{ project.summary }}</p>
+            <div class="project-tags">
+              @for (technology of project.technologies; track technology) {
+                <span>{{ technology }}</span>
+              }
+            </div>
+            <div class="project-links">
+              <a [href]="project.githubUrl" target="_blank" rel="noopener noreferrer">GitHub</a>
+              @if (project.liveUrl) {
+                <a [href]="project.liveUrl" target="_blank" rel="noopener noreferrer">Live demo</a>
+              }
+            </div>
+          </div>
+        </article>
+      }
+    </div>
+  </div>
+</section>

@@ -7,53 +7,32 @@
     </div>
 
     <div class="timeline">
-      <article class="timeline-item" data-aos="fade-up">
-        <div class="timeline-marker"></div>
-        <div class="card timeline-card">
-          <div class="timeline-header">
-            <div>
-              <p class="timeline-period">Current role</p>
-              <h3>Associate Software Engineer</h3>
-              <p class="timeline-company">Morgan Stanley</p>
+      @for (item of experienceItems; track item.company) {
+        <article class="timeline-item" data-aos="fade-up">
+          <div class="timeline-marker"></div>
+          <div class="card timeline-card">
+            <div class="timeline-header">
+              <div>
+                <p class="timeline-period">{{ item.period }}</p>
+                <h3>{{ item.title }}</h3>
+                <p class="timeline-company">{{ item.company }}</p>
+              </div>
+              <span class="timeline-tag">{{ item.category }}</span>
             </div>
-            <span class="timeline-tag">Enterprise software</span>
-          </div>
-          <p>
-            Working on software development and application development for enterprise financial systems.
-          </p>
-          <div class="tag-list">
-            <span>Java</span>
-            <span>Spring</span>
-            <span>DB2</span>
-            <span>Jenkins</span>
-            <span>Git</span>
-          </div>
-        </div>
-      </article>
-
-      <article class="timeline-item" data-aos="fade-up" data-aos-delay="100">
-        <div class="timeline-marker"></div>
-        <div class="card timeline-card">
-          <div class="timeline-header">
-            <div>
-              <p class="timeline-period">2018 – 2019</p>
-              <h3>Associate Software Engineer</h3>
-              <p class="timeline-company">Novelsynth Soft Solution Pvt Ltd</p>
+            <p>{{ item.summary }}</p>
+            <ul class="timeline-highlights">
+              @for (highlight of item.highlights; track highlight) {
+                <li>{{ highlight }}</li>
+              }
+            </ul>
+            <div class="tag-list">
+              @for (technology of item.technologies; track technology) {
+                <span>{{ technology }}</span>
+              }
             </div>
-            <span class="timeline-tag">Web development</span>
           </div>
-          <p>
-            Developed analytical and visualization solutions for oil and gas industry applications.
-          </p>
-          <div class="tag-list">
-            <span>Java</span>
-            <span>Python</span>
-            <span>Vaadin</span>
-            <span>MySQL</span>
-            <span>Azure</span>
-          </div>
-        </div>
-      </article>
+        </article>
+      }
     </div>
   </div>
 </section>

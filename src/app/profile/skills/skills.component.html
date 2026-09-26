@@ -6,10 +6,18 @@
       <p class="section-description">A balanced stack across backend, frontend, data, and delivery tooling.</p>
     </div>
     <div class="skills-grid">
-      <article class="card skill-card" data-aos="fade-up"><span class="skill-icon">01</span><h3>Backend</h3><p>Java, Spring, Python, REST APIs, Hibernate</p></article>
-      <article class="card skill-card" data-aos="fade-up" data-aos-delay="70"><span class="skill-icon">02</span><h3>Frontend</h3><p>Angular, TypeScript, JavaScript, HTML, CSS</p></article>
-      <article class="card skill-card" data-aos="fade-up" data-aos-delay="140"><span class="skill-icon">03</span><h3>Data</h3><p>SQL, MySQL, DB2, data modelling, analytics</p></article>
-      <article class="card skill-card" data-aos="fade-up" data-aos-delay="210"><span class="skill-icon">04</span><h3>Tools & cloud</h3><p>Git, Jenkins, Maven, Azure, Agile, Shell scripting</p></article>
+      @for (group of skillGroups; track group.title; let index = $index) {
+        <article class="card skill-card" data-aos="fade-up">
+          <span class="skill-icon">{{ index + 1 < 10 ? '0' + (index + 1) : index + 1 }}</span>
+          <h3>{{ group.title }}</h3>
+          <p>{{ group.description }}</p>
+          <div class="skill-tags">
+            @for (tool of group.tools; track tool) {
+              <span>{{ tool }}</span>
+            }
+          </div>
+        </article>
+      }
     </div>
   </div>
 </section>
