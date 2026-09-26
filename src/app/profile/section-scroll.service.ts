@@ -29,7 +29,7 @@ export class SectionScrollService {
       return;
     }
 
-    this.observer = new IntersectionObserver(
+    this.observer = new view.IntersectionObserver(
       (entries) => {
         const activeEntry = entries
           .filter((entry) => entry.isIntersecting)
@@ -63,8 +63,17 @@ export class SectionScrollService {
       return;
     }
 
+    const section = this.document.getElementById(hashSection);
+    const view = this.document.defaultView;
+    if (!section || !view) {
+      this.activeSectionState.set(hashSection);
+      return;
+    }
+
     this.document.defaultView?.requestAnimationFrame(() => {
-      this.scrollToSection(hashSection, true);
+      this.activeSectionState.set(hashSection);
+      const top = section.getBoundingClientRect().top + view.scrollY - this.getHeaderOffset();
+      view.scrollTo({ top: Math.max(top, 0), behavior: 'auto' });
     });
   }
 

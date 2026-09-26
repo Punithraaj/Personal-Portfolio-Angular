@@ -32,4 +32,18 @@ describe('FooterComponent', () => {
     const compiled = fixture.nativeElement as HTMLElement;
     expect(compiled.querySelector('a[href*="drive.google.com"]')?.textContent).toContain('Resume');
   });
+
+  it('should toggle the back-to-top button based on scroll position', () => {
+    spyOnProperty(window, 'scrollY', 'get').and.returnValue(600);
+
+    component.onWindowScroll();
+
+    expect(component.showBackToTop).toBeTrue();
+  });
+
+  it('should scroll to the home section from the back-to-top control', () => {
+    component.scrollToTop();
+
+    expect(sectionScrollService.scrollToSection).toHaveBeenCalledWith('home');
+  });
 });
