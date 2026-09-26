@@ -1,9 +1,13 @@
 <header class="site-header">
   <nav class="nav-shell container" aria-label="Primary navigation">
-    <a class="brand" href="#home"><span class="brand-mark">P</span><span>Punithraj M N</span></a>
+    <a class="brand" href="#home" (click)="navigateToSection($event, 'home')"><span class="brand-mark">P</span><span>Punithraj M N</span></a>
     <button class="menu-toggle" type="button" aria-label="Toggle navigation" [attr.aria-expanded]="menuOpen" (click)="menuOpen = !menuOpen"><span></span><span></span><span></span></button>
     <div class="nav-links" [class.is-open]="menuOpen">
-      <a href="#about" (click)="menuOpen = false">About</a><a href="#experience" (click)="menuOpen = false">Experience</a><a href="#skills" (click)="menuOpen = false">Skills</a><a href="#education" (click)="menuOpen = false">Education</a><a href="#contact" (click)="menuOpen = false">Contact</a>
+      <a href="#about" (click)="navigateToSection($event, 'about')">About</a>
+      <a href="#experience" (click)="navigateToSection($event, 'experience')">Experience</a>
+      <a href="#skills" (click)="navigateToSection($event, 'skills')">Skills</a>
+      <a href="#education" (click)="navigateToSection($event, 'education')">Education</a>
+      <a href="#contact" (click)="navigateToSection($event, 'contact')">Contact</a>
     </div>
   </nav>
 </header>

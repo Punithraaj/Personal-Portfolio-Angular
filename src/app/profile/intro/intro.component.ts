@@ -7,4 +7,16 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.Eager,
   styleUrls: ['./intro.component.scss']
 })
-export class IntroComponent {}
+export class IntroComponent {
+  navigateToSection(event: Event, sectionId: string): void {
+    event.preventDefault();
+
+    const section = document.getElementById(sectionId);
+    if (!section) {
+      return;
+    }
+
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    section.scrollIntoView({ behavior: prefersReducedMotion ? 'auto' : 'smooth', block: 'start' });
+  }
+}
