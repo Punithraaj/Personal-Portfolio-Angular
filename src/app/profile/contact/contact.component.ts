@@ -1,33 +1,30 @@
-import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { HttpHeaders} from '@angular/common/http';
-import { ProfileService } from '../profile.service';
-import { SnotifyService } from 'ng-snotify';
-import { environment } from '../../../environments/environment';
+import { CommonModule } from '@angular/common';
+import { Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-contact',
+  standalone: true,
+  imports: [CommonModule, FormsModule],
   templateUrl: './contact.component.html',
   styleUrls: ['./contact.component.scss']
 })
-  export class ContactComponent implements OnInit {
- 
-    model: any = {};
-  
-    constructor(
-      private http: HttpClient
-    ){}
-  
-    ngOnInit() {
-       }
-       onSubmit(name, subject, email, message) {
-          const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-          this.http.post('https://formspree.io/f/mwkwpzve',
-            { name: name, subject: subject, replyto: email, message: message },
-            { 'headers': headers }).subscribe(
-              response => {
-                console.log(response);
-              }
-            );
-        }  
+export class ContactComponent {
+  model: { name?: string; subject?: string; email?: string; message?: string } = {};
+
+  constructor(private readonly http: HttpClient) {}
+
+  onSubmit(name: string, subject: string, email: string, message: string): void {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+
+    this.http.post(
+      'https://formspree.io/f/mwkwpzve',
+      { name, subject, replyto: email, message },
+      { headers }
+    ).subscribe({
+      next: () => this.model = {},
+      error: (error) => console.error('Contact form submission failed', error)
+    });
+  }
 }
