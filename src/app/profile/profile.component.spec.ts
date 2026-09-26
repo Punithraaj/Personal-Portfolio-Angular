@@ -1,4 +1,3 @@
-import { provideHttpClient } from '@angular/common/http';
 import { provideHttpClientTesting } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ProfileComponent } from './profile.component';
@@ -16,7 +15,7 @@ describe('ProfileComponent', () => {
 
     await TestBed.configureTestingModule({
       imports: [ProfileComponent],
-      providers: [provideHttpClient(), provideHttpClientTesting()]
+      providers: [provideHttpClientTesting()]
     }).compileComponents();
 
     fixture = TestBed.createComponent(ProfileComponent);

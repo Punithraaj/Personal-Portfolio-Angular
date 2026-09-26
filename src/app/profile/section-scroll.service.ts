@@ -7,6 +7,7 @@ import { Injectable, inject, signal } from '@angular/core';
 export class SectionScrollService {
   private readonly document = inject(DOCUMENT);
   private observer?: IntersectionObserver;
+  private readonly intersectionStates = new Map<string, IntersectionObserverEntry>();
   private readonly activeSectionState = signal<string>('home');
 
   readonly activeSection = this.activeSectionState.asReadonly();
@@ -22,6 +23,7 @@ export class SectionScrollService {
       return;
     }
 
+    this.intersectionStates.clear();
     this.activeSectionState.set(this.getInitialSection(sectionIds));
 
     const view = this.document.defaultView;
@@ -31,7 +33,13 @@ export class SectionScrollService {
 
     this.observer = new view.IntersectionObserver(
       (entries) => {
-        const activeEntry = entries
+        entries.forEach((entry) => {
+          if (entry.target instanceof HTMLElement) {
+            this.intersectionStates.set(entry.target.id, entry);
+          }
+        });
+
+        const activeEntry = Array.from(this.intersectionStates.values())
           .filter((entry) => entry.isIntersecting)
           .sort(
             (first, second) =>
@@ -55,6 +63,7 @@ export class SectionScrollService {
   stopTracking(): void {
     this.observer?.disconnect();
     this.observer = undefined;
+    this.intersectionStates.clear();
   }
 
   restoreSectionFromHash(sectionIds: string[]): void {
