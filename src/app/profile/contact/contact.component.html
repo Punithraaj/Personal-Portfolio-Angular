@@ -1,6 +1,6 @@
 <section id="contact" class="section">
   <div class="container">
-    <div class="contact-card card">
+    <div class="contact-card card" data-aos="fade-up">
       <div class="contact-copy">
         <p class="section-eyebrow">Contact</p>
         <h2 class="section-title">Have a project or opportunity?</h2>
@@ -12,28 +12,53 @@
         </div>
       </div>
 
-      <form class="contact-form" (ngSubmit)="onSubmit(model.name || '', model.subject || '', model.email || '', model.message || '')" novalidate>
+      <form class="contact-form" #contactForm="ngForm" (ngSubmit)="onSubmit(contactForm)" novalidate>
         <label>
           Name
-          <input type="text" name="name" [(ngModel)]="model.name" required placeholder="Your name">
+          <input type="text" name="name" [(ngModel)]="model.name" required placeholder="Your name" #name="ngModel" [attr.aria-invalid]="name.invalid && name.touched">
+          @if (name.invalid && name.touched) {
+            <span class="field-error">Name is required.</span>
+          }
         </label>
 
         <label>
           Subject
-          <input type="text" name="subject" [(ngModel)]="model.subject" required placeholder="Project topic">
+          <input type="text" name="subject" [(ngModel)]="model.subject" required placeholder="Project topic" #subject="ngModel" [attr.aria-invalid]="subject.invalid && subject.touched">
+          @if (subject.invalid && subject.touched) {
+            <span class="field-error">Subject is required.</span>
+          }
         </label>
 
         <label>
           Email
-          <input type="email" name="email" [(ngModel)]="model.email" required placeholder="you@example.com">
+          <input type="email" name="email" [(ngModel)]="model.email" required email placeholder="you@example.com" #email="ngModel" [attr.aria-invalid]="email.invalid && email.touched">
+          @if (email.invalid && email.touched) {
+            @if (email.errors?.['required']) {
+              <span class="field-error">Email is required.</span>
+            } @else {
+              <span class="field-error">Enter a valid email address.</span>
+            }
+          }
         </label>
 
         <label>
           Message
-          <textarea name="message" [(ngModel)]="model.message" required rows="5" placeholder="Tell me about your project"></textarea>
+          <textarea name="message" [(ngModel)]="model.message" required rows="5" placeholder="Tell me about your project" #message="ngModel" [attr.aria-invalid]="message.invalid && message.touched"></textarea>
+          @if (message.invalid && message.touched) {
+            <span class="field-error">Message is required.</span>
+          }
         </label>
 
-        <button class="btn btn-primary" type="submit">Send message</button>
+        @if (submitSuccess) {
+          <p class="submit-feedback success" role="status" aria-live="polite">{{ submitSuccess }}</p>
+        }
+        @if (submitError) {
+          <p class="submit-feedback error" role="alert">{{ submitError }}</p>
+        }
+
+        <button class="btn btn-primary" type="submit" [disabled]="isSubmitting" [attr.aria-busy]="isSubmitting">
+          {{ isSubmitting ? 'Sending...' : 'Send message' }}
+        </button>
       </form>
     </div>
   </div>

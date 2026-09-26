@@ -1,7 +1,7 @@
 
 import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { FormsModule, NgForm } from '@angular/forms';
+import { ProfileService } from '../profile.service';
 
 @Component({
     selector: 'app-contact',
@@ -12,19 +12,42 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class ContactComponent {
   model: { name?: string; subject?: string; email?: string; message?: string } = {};
+  submitError = '';
+  submitSuccess = '';
+  isSubmitting = false;
 
-  constructor(private readonly http: HttpClient) {}
+  constructor(private readonly profileService: ProfileService) {}
 
-  onSubmit(name: string, subject: string, email: string, message: string): void {
-    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+  onSubmit(form: NgForm): void {
+    if (this.isSubmitting) {
+      return;
+    }
 
-    this.http.post(
-      'https://formspree.io/f/mwkwpzve',
-      { name, subject, replyto: email, message },
-      { headers }
-    ).subscribe({
-      next: () => this.model = {},
-      error: (error) => console.error('Contact form submission failed', error)
+    if (form.invalid) {
+      form.control.markAllAsTouched();
+      return;
+    }
+
+    this.submitError = '';
+    this.submitSuccess = '';
+    this.isSubmitting = true;
+
+    this.profileService.contactus({
+      name: this.model.name ?? '',
+      subject: this.model.subject ?? '',
+      replyto: this.model.email ?? '',
+      message: this.model.message ?? ''
+    }).subscribe({
+      next: () => {
+        this.submitSuccess = 'Message sent successfully. I will get back to you soon.';
+        this.model = {};
+        form.resetForm();
+        this.isSubmitting = false;
+      },
+      error: () => {
+        this.submitError = 'Unable to send your message right now. Please try again shortly.';
+        this.isSubmitting = false;
+      }
     });
   }
 }

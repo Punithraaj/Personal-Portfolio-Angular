@@ -1,4 +1,5 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { SectionScrollService } from '../section-scroll.service';
 
 @Component({
   selector: 'app-intro',
@@ -7,4 +8,11 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.Eager,
   styleUrls: ['./intro.component.scss']
 })
-export class IntroComponent {}
+export class IntroComponent {
+  constructor(private readonly sectionScrollService: SectionScrollService) {}
+
+  navigateToSection(event: Event, sectionId: string): void {
+    event.preventDefault();
+    this.sectionScrollService.scrollToSection(sectionId);
+  }
+}

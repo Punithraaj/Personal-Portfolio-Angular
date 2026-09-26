@@ -29,4 +29,6 @@ button, input, textarea { font: inherit; }
 .btn:hover { transform: translateY(-2px); }
 .btn-primary { color: #06201f; background: linear-gradient(135deg,var(--accent),var(--accent-2)); box-shadow: 0 12px 30px rgba(45,212,191,.2); }
 .btn-secondary { border-color: var(--border); color: var(--text); }
+a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; } }
 @media (max-width: 640px) { .container { width: min(calc(100% - 28px), var(--content)); } .section { padding: 76px 0; } }
