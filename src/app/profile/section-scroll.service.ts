@@ -75,7 +75,7 @@ export class SectionScrollService {
     const section = this.document.getElementById(hashSection);
     const view = this.document.defaultView;
     if (!section || !view) {
-      this.activeSectionState.set(hashSection);
+      this.activeSectionState.set(this.getInitialSection(sectionIds));
       return;
     }
 

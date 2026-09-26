@@ -22,5 +22,7 @@ describe('ProjectsComponent', () => {
   it('should render project cards', () => {
     const cards = fixture.nativeElement.querySelectorAll('.project-card');
     expect(cards.length).toBe(component.projects.length);
+    expect(fixture.nativeElement.textContent).toContain('Personal Portfolio Flutter');
+    expect(fixture.nativeElement.textContent).toContain('Live demo');
   });
 });

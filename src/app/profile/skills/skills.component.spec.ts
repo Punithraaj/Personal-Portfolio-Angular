@@ -22,5 +22,7 @@ describe('SkillsComponent', () => {
   it('should render each skill group', () => {
     const cards = fixture.nativeElement.querySelectorAll('.skill-card');
     expect(cards.length).toBe(component.skillGroups.length);
+    expect(fixture.nativeElement.textContent).toContain('Backend');
+    expect(fixture.nativeElement.textContent).toContain('Java');
   });
 });
