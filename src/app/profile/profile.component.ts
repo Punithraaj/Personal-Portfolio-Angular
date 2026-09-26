@@ -36,17 +36,27 @@ declare global {
 export class ProfileComponent implements AfterViewInit {
   ngAfterViewInit(): void {
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (prefersReducedMotion || !window.AOS) {
+    this.initializeAosWhenAvailable(prefersReducedMotion);
+  }
+
+  private initializeAosWhenAvailable(prefersReducedMotion: boolean, attempt: number = 0): void {
+    if (window.AOS) {
+      window.requestAnimationFrame(() => {
+        window.AOS?.init({
+          once: true,
+          duration: prefersReducedMotion ? 0 : 650,
+          disable: prefersReducedMotion,
+          easing: 'ease-out-cubic'
+        });
+        window.AOS?.refreshHard?.();
+      });
       return;
     }
 
-    window.requestAnimationFrame(() => {
-      window.AOS?.init({
-        once: true,
-        duration: 650,
-        easing: 'ease-out-cubic'
-      });
-      window.AOS?.refreshHard?.();
-    });
+    if (attempt >= 25) {
+      return;
+    }
+
+    window.setTimeout(() => this.initializeAosWhenAvailable(prefersReducedMotion, attempt + 1), 120);
   }
 }

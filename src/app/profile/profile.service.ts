@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
     providedIn: 'root'
@@ -13,6 +13,11 @@ export class ProfileService {
   ) { }
 
   contactus(data: { name: string; subject: string; replyto: string; message: string }): Observable<unknown> {
-    return this.http.post(this.formspreeUrl, data);
+    return this.http.post(this.formspreeUrl, data, {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        Accept: 'application/json'
+      })
+    });
   }
 }

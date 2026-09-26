@@ -19,7 +19,11 @@ export class ContactComponent {
   constructor(private readonly profileService: ProfileService) {}
 
   onSubmit(form: NgForm): void {
-    if (form.invalid || this.isSubmitting) {
+    if (this.isSubmitting) {
+      return;
+    }
+
+    if (form.invalid) {
       form.control.markAllAsTouched();
       return;
     }

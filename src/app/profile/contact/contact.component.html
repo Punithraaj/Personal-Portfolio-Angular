@@ -33,7 +33,11 @@
           Email
           <input type="email" name="email" [(ngModel)]="model.email" required email placeholder="you@example.com" #email="ngModel" [attr.aria-invalid]="email.invalid && email.touched">
           @if (email.invalid && email.touched) {
-            <span class="field-error">Enter a valid email address.</span>
+            @if (email.errors?.['required']) {
+              <span class="field-error">Email is required.</span>
+            } @else {
+              <span class="field-error">Enter a valid email address.</span>
+            }
           }
         </label>
 
@@ -52,7 +56,7 @@
           <p class="submit-feedback error" role="alert">{{ submitError }}</p>
         }
 
-        <button class="btn btn-primary" type="submit" [disabled]="isSubmitting || contactForm.invalid" [attr.aria-busy]="isSubmitting">
+        <button class="btn btn-primary" type="submit" [disabled]="isSubmitting" [attr.aria-busy]="isSubmitting">
           {{ isSubmitting ? 'Sending...' : 'Send message' }}
         </button>
       </form>

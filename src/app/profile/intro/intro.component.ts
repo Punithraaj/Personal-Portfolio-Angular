@@ -1,4 +1,5 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { SectionScrollService } from '../section-scroll.service';
 
 @Component({
   selector: 'app-intro',
@@ -8,15 +9,10 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
   styleUrls: ['./intro.component.scss']
 })
 export class IntroComponent {
+  constructor(private readonly sectionScrollService: SectionScrollService) {}
+
   navigateToSection(event: Event, sectionId: string): void {
     event.preventDefault();
-
-    const section = document.getElementById(sectionId);
-    if (!section) {
-      return;
-    }
-
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    section.scrollIntoView({ behavior: prefersReducedMotion ? 'auto' : 'smooth', block: 'start' });
+    this.sectionScrollService.scrollToSection(sectionId);
   }
 }
