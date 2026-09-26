@@ -18,7 +18,7 @@
         <a
           [href]="'#' + item.id"
           [class.is-active]="activeSection() === item.id"
-          [attr.aria-current]="activeSection() === item.id ? 'page' : null"
+          [attr.aria-current]="activeSection() === item.id ? 'location' : null"
           (click)="navigateToSection($event, item.id)">
           {{ item.label }}
         </a>

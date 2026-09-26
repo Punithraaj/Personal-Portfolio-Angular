@@ -73,12 +73,23 @@ export class SectionScrollService {
     }
 
     const section = this.document.getElementById(hashSection);
-    if (!section) {
+    const view = this.document.defaultView;
+    if (!section || !view) {
       this.activeSectionState.set(this.getInitialSection(sectionIds));
       return;
     }
 
-    this.activeSectionState.set(hashSection);
+    view.requestAnimationFrame(() => {
+      this.activeSectionState.set(hashSection);
+      const offset = this.getHeaderOffset();
+      const top = section.getBoundingClientRect().top;
+      if (top < offset - 1) {
+        view.scrollTo({
+          top: Math.max(view.scrollY + top - offset, 0),
+          behavior: 'auto'
+        });
+      }
+    });
   }
 
   scrollToSection(sectionId: string, replaceHistory: boolean = false): void {

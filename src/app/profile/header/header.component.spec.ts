@@ -38,7 +38,7 @@ describe('HeaderComponent', () => {
   });
 
   it('should mark the active section link', () => {
-    const activeLink = fixture.nativeElement.querySelector('a[aria-current="page"]') as HTMLAnchorElement;
+    const activeLink = fixture.nativeElement.querySelector('a[aria-current="location"]') as HTMLAnchorElement;
     expect(activeLink.textContent?.trim()).toBe('Projects');
   });
 });
