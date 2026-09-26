@@ -3,15 +3,26 @@
   <div class="hero-glow two"></div>
   <div class="container hero-grid">
     <div class="hero-copy" data-aos="fade-up">
-      <p class="section-eyebrow">Full Stack Developer</p>
-      <h1>Building reliable products <span>with thoughtful code.</span></h1>
-      <p class="hero-description">I’m Punithraj M N, a software engineer focused on Java, Angular, Python, enterprise applications, and clean user experiences.</p>
+      <p class="section-eyebrow">{{ profile.role }}</p>
+      <h1>{{ profile.headline }}</h1>
+      <p class="hero-description">{{ profile.heroSummary }}</p>
+      <div class="hero-pills" aria-label="Core focus areas">
+        <span>Java</span>
+        <span>Angular</span>
+        <span>Python</span>
+        <span>Enterprise systems</span>
+      </div>
       <div class="hero-actions">
-        <a class="btn btn-primary" href="#contact" (click)="navigateToSection($event, 'contact')">Let’s work together</a>
-        <a class="btn btn-secondary" href="https://drive.google.com/file/d/1Bngz7t8l_RAtwVmtHjnPe6CIoFWK9AfY/view" target="_blank" rel="noopener noreferrer" aria-label="Open resume in a new tab">Download CV</a>
+        <a class="btn btn-primary" href="#contact" (click)="navigateToSection($event, 'contact')">Contact me</a>
+        <a class="btn btn-secondary" [href]="profile.resumeUrl" target="_blank" rel="noopener noreferrer" aria-label="Open resume in a new tab">View resume</a>
+      </div>
+      <div class="hero-links" aria-label="Social links">
+        @for (link of profile.socialLinks; track link.label) {
+          <a [href]="link.url" target="_blank" rel="noopener noreferrer">{{ link.label }}</a>
+        }
       </div>
       <div class="hero-meta">
-        <span>Based in India</span>
+        <span>{{ profile.location }}</span>
         <span>•</span>
         <span>Open to opportunities</span>
       </div>
@@ -19,8 +30,8 @@
 
     <div class="hero-visual" data-aos="zoom-in" data-aos-delay="120">
       <div class="portrait-card"><img src="assets/images/profile.JPG" alt="Portrait of Punithraj M N"></div>
-      <div class="floating-card top"><strong>Java · Angular</strong><span>Core technologies</span></div>
-      <div class="floating-card bottom"><strong>Build. Learn. Improve.</strong><span>Engineering mindset</span></div>
+      <div class="floating-card top"><strong>Java · Angular · Python</strong><span>Core technologies</span></div>
+      <div class="floating-card bottom"><strong>Enterprise · Analytics · Web</strong><span>Solution areas</span></div>
     </div>
   </div>
 </section>

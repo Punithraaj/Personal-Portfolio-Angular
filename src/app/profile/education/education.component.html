@@ -7,26 +7,14 @@
     </div>
 
     <div class="education-grid">
-      <article class="card education-card" data-aos="fade-up">
-        <p class="edu-period">2015 – 2018</p>
-        <h3>Bachelor of Engineering</h3>
-        <p class="edu-school">R.V. College of Engineering</p>
-        <span>Computer Engineering · 8.1 CGPA</span>
-      </article>
-
-      <article class="card education-card" data-aos="fade-up" data-aos-delay="80">
-        <p class="edu-period">2012 – 2015</p>
-        <h3>Diploma in Computer Science</h3>
-        <p class="edu-school">Smt. L.V. Polytechnic, Hassan</p>
-        <span>90% aggregate</span>
-      </article>
-
-      <article class="card education-card" data-aos="fade-up" data-aos-delay="140">
-        <p class="edu-period">2009 – 2011</p>
-        <h3>Industrial Training Institute</h3>
-        <p class="edu-school">Government ITI, Hassan</p>
-        <span>Centre of Excellence · 80% aggregate</span>
-      </article>
+      @for (item of educationItems; track item.school) {
+        <article class="card education-card" data-aos="fade-up">
+          <p class="edu-period">{{ item.period }}</p>
+          <h3>{{ item.title }}</h3>
+          <p class="edu-school">{{ item.school }}</p>
+          <span>{{ item.detail }}</span>
+        </article>
+      }
     </div>
   </div>
 </section>

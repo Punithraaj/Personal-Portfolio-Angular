@@ -1,11 +1,21 @@
 <footer class="site-footer">
   <div class="container footer-inner">
-    <div class="footer-brand">Punithraj M N</div>
+    <div>
+      <div class="footer-brand">{{ profile.name }}</div>
+      <p class="footer-copy">{{ profile.role }} · {{ profile.email }}</p>
+    </div>
     <div class="footer-links">
-      <a href="https://www.linkedin.com/in/roaring-raaj" target="_blank" rel="noopener">LinkedIn</a>
-      <a href="https://github.com/Punithraaj" target="_blank" rel="noopener">GitHub</a>
-      <a href="https://www.facebook.com/roaring.raaj/" target="_blank" rel="noopener">Facebook</a>
-      <a href="https://twitter.com/roaringraaj" target="_blank" rel="noopener">Twitter</a>
+      <a [href]="'mailto:' + profile.email">Email</a>
+      <a [href]="profile.resumeUrl" target="_blank" rel="noopener noreferrer">Resume</a>
+      @for (link of profile.socialLinks; track link.label) {
+        <a [href]="link.url" target="_blank" rel="noopener noreferrer">{{ link.label }}</a>
+      }
     </div>
   </div>
+  <div class="container footer-meta">
+    <p>© {{ year }} {{ profile.name }}. Built for clear navigation, accessible interaction, and responsive presentation.</p>
+  </div>
+  <button class="back-to-top" type="button" [class.is-visible]="showBackToTop" (click)="scrollToTop()" aria-label="Back to top">
+    ↑
+  </button>
 </footer>

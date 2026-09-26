@@ -1,12 +1,15 @@
-import { Component, ChangeDetectionStrategy, AfterViewInit } from '@angular/core';
+import { Component, ChangeDetectionStrategy, AfterViewInit, OnDestroy } from '@angular/core';
 import { HeaderComponent } from './header/header.component';
 import { IntroComponent } from './intro/intro.component';
 import { AboutComponent } from './about/about.component';
 import { ExperienceComponent } from './experience/experience.component';
+import { ProjectsComponent } from './projects/projects.component';
 import { SkillsComponent } from './skills/skills.component';
 import { EducationComponent } from './education/education.component';
 import { ContactComponent } from './contact/contact.component';
 import { FooterComponent } from './footer/footer.component';
+import { NAV_ITEMS } from './portfolio-content';
+import { SectionScrollService } from './section-scroll.service';
 
 declare global {
   interface Window {
@@ -24,6 +27,7 @@ declare global {
         IntroComponent,
         AboutComponent,
         ExperienceComponent,
+        ProjectsComponent,
         SkillsComponent,
         EducationComponent,
         ContactComponent,
@@ -33,10 +37,20 @@ declare global {
     changeDetection: ChangeDetectionStrategy.Eager,
     styleUrls: ['./profile.component.scss']
 })
-export class ProfileComponent implements AfterViewInit {
+export class ProfileComponent implements AfterViewInit, OnDestroy {
+  private readonly sectionIds = ['home', ...NAV_ITEMS.map((item) => item.id)];
+
+  constructor(private readonly sectionScrollService: SectionScrollService) {}
+
   ngAfterViewInit(): void {
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    this.sectionScrollService.startTracking(this.sectionIds);
+    this.sectionScrollService.restoreSectionFromHash(this.sectionIds);
     this.initializeAosWhenAvailable(prefersReducedMotion);
+  }
+
+  ngOnDestroy(): void {
+    this.sectionScrollService.stopTracking();
   }
 
   private initializeAosWhenAvailable(prefersReducedMotion: boolean, attempt: number = 0): void {

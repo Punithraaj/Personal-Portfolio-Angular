@@ -1,4 +1,5 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { ABOUT_PARAGRAPHS, PROFILE } from '../portfolio-content';
 
 @Component({
   selector: 'app-about',
@@ -7,4 +8,7 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.Eager,
   styleUrls: ['./about.component.scss']
 })
-export class AboutComponent {}
+export class AboutComponent {
+  readonly aboutParagraphs = ABOUT_PARAGRAPHS;
+  readonly profile = PROFILE;
+}

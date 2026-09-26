@@ -1,4 +1,5 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { SKILL_GROUPS } from '../portfolio-content';
 
 @Component({
   selector: 'app-skills',
@@ -7,4 +8,6 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.Eager,
   styleUrls: ['./skills.component.scss']
 })
-export class SkillsComponent {}
+export class SkillsComponent {
+  readonly skillGroups = SKILL_GROUPS;
+}

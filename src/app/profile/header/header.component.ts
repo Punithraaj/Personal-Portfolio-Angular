@@ -1,4 +1,5 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy, HostListener } from '@angular/core';
+import { NAV_ITEMS } from '../portfolio-content';
 import { SectionScrollService } from '../section-scroll.service';
 
 @Component({
@@ -9,6 +10,9 @@ import { SectionScrollService } from '../section-scroll.service';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
+  readonly navigationItems = NAV_ITEMS;
+  readonly activeSection = this.sectionScrollService.activeSection;
+
   menuOpen = false;
 
   constructor(private readonly sectionScrollService: SectionScrollService) {}
@@ -17,5 +21,14 @@ export class HeaderComponent {
     event.preventDefault();
     this.menuOpen = false;
     this.sectionScrollService.scrollToSection(sectionId);
+  }
+
+  toggleMenu(): void {
+    this.menuOpen = !this.menuOpen;
+  }
+
+  @HostListener('document:keydown.escape')
+  closeMenu(): void {
+    this.menuOpen = false;
   }
 }

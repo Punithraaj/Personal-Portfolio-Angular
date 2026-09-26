@@ -1,4 +1,5 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { EXPERIENCE_ITEMS } from '../portfolio-content';
 
 @Component({
   selector: 'app-experience',
@@ -7,4 +8,6 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.Eager,
   styleUrls: ['./experience.component.scss']
 })
-export class ExperienceComponent {}
+export class ExperienceComponent {
+  readonly experienceItems = EXPERIENCE_ITEMS;
+}

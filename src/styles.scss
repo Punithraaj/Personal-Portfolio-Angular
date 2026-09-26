@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
-
 :root {
   --bg: #07111f;
   --bg-soft: #0d1b2d;
@@ -10,19 +8,23 @@
   --accent-2: #22d3ee;
   --border: rgba(255,255,255,.12);
   --content: 1180px;
+  --font-sans: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-display: 'Segoe UI', Inter, -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; scroll-padding-top: 90px; }
-body { margin: 0; color: var(--text); background: radial-gradient(circle at 10% 0%, rgba(34,211,238,.12), transparent 28rem), var(--bg); font-family: 'DM Sans', sans-serif; line-height: 1.6; }
+html { scroll-behavior: smooth; scroll-padding-top: 96px; }
+body { margin: 0; color: var(--text); background: radial-gradient(circle at 10% 0%, rgba(34,211,238,.12), transparent 28rem), var(--bg); font-family: var(--font-sans); line-height: 1.6; }
 a { color: inherit; text-decoration: none; }
 button, input, textarea { font: inherit; }
+.page-content { display: block; }
+.page-content > section[id] { scroll-margin-top: 110px; }
 .container { width: min(calc(100% - 40px), var(--content)); margin: 0 auto; }
 .section { padding: 110px 0; }
 .section-muted { background: rgba(255,255,255,.025); }
 .section-heading { max-width: 700px; margin-bottom: 42px; }
 .section-eyebrow { margin: 0 0 12px; color: var(--accent); font-size: .78rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; }
-.section-title { margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: clamp(2rem, 4vw, 3.5rem); line-height: 1.08; }
+.section-title { margin: 0; font-family: var(--font-display); font-size: clamp(2rem, 4vw, 3.5rem); line-height: 1.08; }
 .section-description { color: var(--muted); font-size: 1.05rem; }
 .card { border: 1px solid var(--border); border-radius: 22px; background: var(--surface); box-shadow: 0 24px 80px rgba(0,0,0,.22); backdrop-filter: blur(18px); }
 .btn { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 22px; border: 1px solid transparent; border-radius: 999px; font-weight: 700; transition: transform .18s, box-shadow .18s; }

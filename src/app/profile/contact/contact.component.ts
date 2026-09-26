@@ -1,6 +1,7 @@
 
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
+import { PROFILE } from '../portfolio-content';
 import { ProfileService } from '../profile.service';
 
 @Component({
@@ -11,6 +12,7 @@ import { ProfileService } from '../profile.service';
     styleUrls: ['./contact.component.scss']
 })
 export class ContactComponent {
+  readonly profile = PROFILE;
   model: { name?: string; subject?: string; email?: string; message?: string } = {};
   submitError = '';
   submitSuccess = '';
