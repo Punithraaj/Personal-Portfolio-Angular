@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, Component, HostListener } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
+import { ChangeDetectionStrategy, Component, HostListener, inject } from '@angular/core';
 import { PROFILE } from '../portfolio-content';
 import { SectionScrollService } from '../section-scroll.service';
 
@@ -10,6 +11,7 @@ import { SectionScrollService } from '../section-scroll.service';
   styleUrls: ['./footer.component.scss']
 })
 export class FooterComponent {
+  private readonly document = inject(DOCUMENT);
   readonly profile = PROFILE;
   readonly year = new Date().getFullYear();
 
@@ -19,7 +21,7 @@ export class FooterComponent {
 
   @HostListener('window:scroll')
   onWindowScroll(): void {
-    this.showBackToTop = window.scrollY > 480;
+    this.showBackToTop = (this.document.defaultView?.scrollY ?? 0) > 480;
   }
 
   scrollToTop(): void {
